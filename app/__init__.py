@@ -1,7 +1,8 @@
-from flask import Flask
+from flask import Flask,session,redirect
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import os
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -17,3 +18,12 @@ API_BASE_URL = 'https://api.spotify.com/v1/'
 
 # database 
 db = SQLAlchemy(app) 
+
+
+def refresh():
+    if datetime.now() > session['expires_at']:
+        return redirect('auth/refresh-token')
+    
+def check_token():
+    if 'access_token' not in session:
+        return redirect('/auth/login')

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}    {% endblock %}</title>
+</head>
+<body>
+    <nav class="navv">ptj
+        <ul>
+            <li>Home</li>
+            {% if access_token in session %}
+                <a><li>Profile</li></a>
+                <a><li>My Playlists</li></a>
+                <a><li>My Stats</li></a>
+                <a><li>Logout</li></a>
+            {% else %}
+                <a href="{{url_for('/auth/login')}}"><li>Login</li></a>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <nav class="resp-nav">ptj
+        <ul>
+            <li>Home</li>
+            {% if access_token in session %}
+                <a><li>Profile</li></a>
+                <a><li>My Playlists</li></a>
+                <a><li>My Stats</li></a>
+                <a><li>Logout</li></a>
+            {% else %}
+                <a href="{{url_for('/auth/login')}}"><li>Login</li></a>
+            {% endif %}
+        </ul>
+    </nav>
+</body>
+</html>

@@ -1,12 +1,20 @@
-from flask import Blueprint,session,redirect
-from datetime import datetime
+from flask import Blueprint,session,redirect, jsonify
+from app import refresh, check_token
+from requests import post, get
+from app import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTH_URL, TOKEN_URL, API_BASE_URL
 
-playlists_bp = Blueprint('playlists',__name__)
+playlists_bp = Blueprint('playlists',__name__,url_prefix='/profile/playlists')
 
 @playlists_bp.route('/')
 def get_playlists():
-    if 'access_token' not in session:
-        return redirect('/auth/login')
+    check_token()   # checking if user is logged in
+    refresh()   # refreshing token if expired
 
-    if datetime.now() > session['expires_at']:
-        return redirect('auth/refresh-token')
+    # getting user playlists
+    headers = {
+        'Authorization':f"Bearer {session['access_token']}"
+    }
+    response = get(f'{API_BASE_URL}/me/playlists', headers=headers)
+    playlists = response.json()
+
+    return jsonify(playlists)

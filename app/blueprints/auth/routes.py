@@ -4,11 +4,15 @@ from urllib.parse import urlencode
 from app import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTH_URL, TOKEN_URL, API_BASE_URL
 from datetime import datetime
 
-auth_bp = Blueprint('auth', __name__)
+auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 
+@auth_bp.route('/test')
+def test():
+    return 'test'
 
 @auth_bp.route('/login')
 def login():
+    print('reached login')
     # params for oauth with spotify
     params = {
         'client_id': CLIENT_ID,
@@ -50,10 +54,19 @@ def callback():
 
 @auth_bp.route('/logout')
 def logout():
-    # clearing session data to logout
+    # logout by clearing session data
     session.clear()
     return redirect(url_for('app.home'))  
 
 @auth_bp.route('/refresh-token')
 def refresh():
-    pass
+    if 'refresh_token' not in session:
+        return redirect('/login')
+    
+    if datetime.now() > session['expires_at']:
+        req_body = {
+            'refresh_token':session['refresh_token'],
+            'grant_type': 'authorization_code',
+            'client_id': CLIENT_ID,
+            'client_secret': CLIENT_SECRET
+        }
