@@ -1,0 +1,96 @@
+
+
+#navv{
+    display: flex;
+    width: 70%;
+}
+.menu{
+  margin-left: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap:3rem;
+    list-style: none;
+    font-size: 2.3rem;
+    padding: 0;
+}
+.menu li{
+  padding: 0.5rem;
+}
+
+#x {
+  position: absolute;
+  right: 3.4rem;
+  top: 1.9rem;
+  text-decoration: none;
+  color: black;
+  font-size: 6rem;
+  cursor: pointer;
+}
+
+#burger {
+    position: fixed;
+    display: none;
+    background-color: #eee;
+    right: 2rem;
+    top: 2rem;
+    font-size: 4rem;
+    cursor: pointer;
+    padding: 1rem 1.3rem;
+    border-radius: 1rem;
+  }
+
+.resp-menu{
+  list-style: none;
+}
+#resp-nav{
+    position: fixed;
+    background-color: rgba(172, 181, 187, 0.7);
+    height: 100%;
+    width: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: 1;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+
+#resp-nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  text-align: center;
+  padding: 0;
+}
+
+#resp-nav ul a {
+  text-decoration: none;
+  color: black;
+  font-size: 5vw;
+  font-weight: 700;
+  display: block;
+  padding: 2rem 20vw;
+  border-radius: 1rem;
+}
+
+#resp-nav ul a:hover {
+  color: white;
+  background-color: #666;
+}
+
+
+
+@media all and (max-width: 1040px) {
+    #navv {
+      display: none;
+    }
+  
+    #burger {
+      display: block;
+    }
+
+}

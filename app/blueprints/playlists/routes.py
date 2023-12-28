@@ -1,7 +1,7 @@
 from flask import Blueprint,session,redirect, jsonify
-from app import refresh, check_token
+from utils.utils import check_token, refresh
 from requests import post, get
-from app import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTH_URL, TOKEN_URL, API_BASE_URL
+from utils.extenisons import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTH_URL, TOKEN_URL, API_BASE_URL
 
 playlists_bp = Blueprint('playlists',__name__,url_prefix='/profile/playlists')
 

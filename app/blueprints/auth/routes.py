@@ -1,7 +1,8 @@
 from flask import Blueprint, redirect, session, request, url_for,jsonify
 from requests import post, get
 from urllib.parse import urlencode
-from app import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTH_URL, TOKEN_URL, API_BASE_URL
+from utils.extenisons import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTH_URL, TOKEN_URL, API_BASE_URL
+
 from datetime import datetime
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
@@ -13,6 +14,7 @@ def test():
 @auth_bp.route('/login')
 def login():
     print('reached login')
+    print(session)
     # params for oauth with spotify
     params = {
         'client_id': CLIENT_ID,
@@ -48,25 +50,34 @@ def callback():
     #   refreshing access token if expires
         session['refresh_token'] = token_info['refresh_token']
     #   info about expiring time
-        session['expires_at'] = datetime.now() + token_info['expires_token']
+        session['expires_in'] = datetime.now().timestamp() + token_info['expires_in']
 
-        return redirect('/accounts/profile')
+        print(session.items())
+        return redirect('/')
 
 @auth_bp.route('/logout')
 def logout():
     # logout by clearing session data
     session.clear()
-    return redirect(url_for('app.home'))  
+    print(session)
+    return redirect(url_for('index'))  
 
 @auth_bp.route('/refresh-token')
 def refresh():
     if 'refresh_token' not in session:
         return redirect('/login')
     
-    if datetime.now() > session['expires_at']:
+    if datetime.now() > session['expires_in']:
         req_body = {
             'refresh_token':session['refresh_token'],
             'grant_type': 'authorization_code',
             'client_id': CLIENT_ID,
             'client_secret': CLIENT_SECRET
         }
+        response = post(TOKEN_URL, data=req_body)
+        new_token_info = response.json()
+        # setting up session with new data from refreshing token
+        session['access_token'] = new_token_info['access_token']
+        session['expires_in'] = datetime.now().timestamp() + new_token_info['expires_in']
+
+        return redirect('/')
