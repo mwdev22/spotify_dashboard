@@ -1,7 +1,7 @@
 from flask import Blueprint, session, render_template
-from utils.extenisons import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTH_URL, TOKEN_URL, API_BASE_URL
+from app.utils.extenisons import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTH_URL, TOKEN_URL, API_BASE_URL
 
-from utils.utils import check_token, refresh
+from app.utils.funcs import check_token, refresh
 from requests import post, get
 
 profile_bp = Blueprint('profile', __name__, url_prefix='/profile')

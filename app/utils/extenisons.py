@@ -4,7 +4,6 @@ import os
 db = SQLAlchemy()
 
 from dotenv import load_dotenv
-print(__name__)
 
 # config, global static variables
 load_dotenv()

@@ -1,20 +1,17 @@
 from flask import Blueprint, redirect, session, request, url_for,jsonify
-from requests import post, get
+from requests import post
 from urllib.parse import urlencode
-from utils.extenisons import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTH_URL, TOKEN_URL, API_BASE_URL
+from app.utils.extenisons import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTH_URL, TOKEN_URL, API_BASE_URL
 
 from datetime import datetime
 
-auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
+auth_bp = Blueprint('auth', __name__, url_prefix='/auth', template_folder='templates')
 
-@auth_bp.route('/test')
-def test():
-    return 'test'
 
 @auth_bp.route('/login')
 def login():
     print('reached login')
-    print(session)
+
     # params for oauth with spotify
     params = {
         'client_id': CLIENT_ID,
@@ -25,7 +22,7 @@ def login():
     # encoding params
     auth_url = f'{AUTH_URL}?{urlencode(params)}'
     
-    # redirect user to spotify login page
+    # redirect user to spotify login page, including encoded params with my app specification
     return redirect(auth_url)
 
 
@@ -59,8 +56,7 @@ def callback():
 def logout():
     # logout by clearing session data
     session.clear()
-    print(session)
-    return redirect(url_for('index'))  
+    return redirect(url_for('main.index'))  
 
 @auth_bp.route('/refresh-token')
 def refresh():
@@ -80,4 +76,4 @@ def refresh():
         session['access_token'] = new_token_info['access_token']
         session['expires_in'] = datetime.now().timestamp() + new_token_info['expires_in']
 
-        return redirect('/')
+    return redirect('/')

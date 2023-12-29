@@ -3,7 +3,7 @@ from datetime import datetime
 
 def refresh():
     if datetime.now().timestamp() > session['expires_in']:
-        return redirect('auth/refresh-token')
+        return redirect('/auth/refresh-token')
 
 def check_token():
     if 'access_token' not in session:
