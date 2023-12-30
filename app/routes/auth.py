@@ -16,11 +16,12 @@ def login():
     params = {
         'client_id': CLIENT_ID,
         'redirect_uri': REDIRECT_URI,
-        'scope': 'user-read-private user-read-email',  
+        'scope': 'user-read-private user-read-email user-top-read',  
         'response_type': 'code',
     }
     # encoding params
     auth_url = f'{AUTH_URL}?{urlencode(params)}'
+    print(auth_url)
     
     # redirect user to spotify login page, including encoded params with my app specification
     return redirect(auth_url)
@@ -49,7 +50,8 @@ def callback():
     #   info about expiring time
         session['expires_in'] = datetime.now().timestamp() + token_info['expires_in']
 
-        print(session.items())
+        print(session['expires_in'])
+
         return redirect('/')
 
 @auth_bp.route('/logout')
@@ -60,6 +62,7 @@ def logout():
 
 @auth_bp.route('/refresh-token')
 def refresh():
+    print('refresh')
     if 'refresh_token' not in session:
         return redirect('/login')
     
