@@ -7,14 +7,14 @@ html{
     font-family: 'Work Sans', sans-serif;
 
 }
-
-body{
-    min-height: 100vh;
-    background: linear-gradient(30deg, #5add63 11%, #000 23%, #000 73%, #5add63 99%)no-repeat ;
-}
 a{
     text-decoration: none;
     color: rgb(158, 157, 157);
+  }
+  
+body{
+    min-height: 100vh;
+    background: linear-gradient(30deg, #5add63 11%, #000 23%, #000 73%, #5add63 99%)no-repeat ;
 }
 
 .container{
@@ -27,11 +27,41 @@ a{
     font-size: 2rem;
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: inherit;
+    text-align: center;
+    background: rgba( 97, 202, 97, 0.5 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 8.5px );
+    -webkit-backdrop-filter: blur( 8.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
+
 .ttl{
     margin: 3rem;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+}
+
+.ttl span{
+    padding: 0 5rem 0 5rem;
+    font-size: 3.5vw;
+}
+
+.s-stats{
+    margin: 3rem;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.s-stats span{
+    font-size: 4vw;
+    margin-bottom: 2rem;
+}
+
+.s-stats p{
+    font-size: 2rem;
 }

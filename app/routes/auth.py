@@ -16,7 +16,7 @@ def login():
     params = {
         'client_id': CLIENT_ID,
         'redirect_uri': REDIRECT_URI,
-        'scope': 'user-read-private user-read-email user-top-read',  
+        'scope': 'user-read-private user-read-email user-top-read playlist-read-private',  
         'response_type': 'code',
     }
     # encoding params

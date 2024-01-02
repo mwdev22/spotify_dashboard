@@ -23,7 +23,7 @@
                         <img src="{{artist.images[1].url}}" class="top-img">
                         <p>
                             <span>{{artist.name}}</span>
-                            <span class="top-note">{{artist.genres[0]}}</span>
+                            <span id="top-s">{{artist.genres[0]}}</span>
                         </p> 
                     </div>
                     </a>
@@ -36,7 +36,7 @@
                         <img src="{{track['album']['images'][1].url}}" class="top-img">
                         <p>
                             <span>{{track.name}}</span>
-                            <span class="top-note">{% for artist in track['artists'] %}
+                            <span id="top-s">{% for artist in track['artists'] %}
                                 {{artist['name']}}
                             {% endfor %}</span>
                         </p>

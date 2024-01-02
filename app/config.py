@@ -12,5 +12,5 @@ SECRET_KEY = os.environ.get('SECRET_KEY') or os.urandom(24)
 PERMANENT_SESSION_LIFETIME = timedelta(days=1)
 SESSION_TYPE = 'cookie'
 
-DEBUG=True
+DEBUG = True
 ENV = 'development'
