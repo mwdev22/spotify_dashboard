@@ -3,27 +3,44 @@
 {% block title %}My Porifle{% endblock %}
 
 {% block content %}
-<p>{{profile}}</p>
 <section class="container">
     <section class="prof-info">
         <div class="ph-div">
             <img src={{profile.images[1].url}} width="{{profile.images[1].width}}" height="{{profile.images[1].height}}">
+            <h5>{{profile.display_name}}</h5>
         </div>
         <div class="name-div">
-            <h5>{{profile.display_name}}</h5>
-            <h1>{{profile.id}}</h1>
+            <h1>ID: {{profile.id}}</h1>
             <h1>Email: {{profile.email}}</h1>
             <h1>Product: {{profile.product}}</h1>
         </div>
     </section>
-    <p style="color: white;">{{artists}}</p>
     <section class="top-items">
             <div class="top-sec">
                 <h5>Your top 5 artists in last 4 weeks</h5>
                 {% for artist in artists['items'] %}
-                    <a href="{{artist.external_urls[1]}}"><div class="top-card">
+                    <a href="{{artist.external_urls['spotify']}}"><div class="top-card">
                         <img src="{{artist.images[1].url}}" class="top-img">
-                        <p>{{artist.name}}</p>
+                        <p>
+                            <span>{{artist.name}}</span>
+                            <span class="top-note">{{artist.genres[0]}}</span>
+                        </p> 
+                    </div>
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="top-sec">
+                <h5>Your top 5 artists in last 4 weeks</h5>
+                {% for track in tracks['items'] %}
+                    <a href="{{track.external_urls['spotify']}}"><div class="top-card">
+                        <img src="{{track['album']['images'][1].url}}" class="top-img">
+                        <p>
+                            <span>{{track.name}}</span>
+                            <span class="top-note">{% for artist in track['artists'] %}
+                                {{artist['name']}}
+                            {% endfor %}</span>
+                        </p>
+                        
                     </div>
                     </a>
                 {% endfor %}

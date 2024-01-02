@@ -13,13 +13,13 @@ def user_profile():
     check_token(session)   # checking if user is logged in
     refresh(session)   # refreshing token if expired
 
-    # getting profile params
+   
     headers = {
         'Authorization':f"Bearer {session['access_token']}"
     }
+     # getting profile info
     prof_response = get(f'{API_BASE_URL}me', headers=headers)
     profile = prof_response.json()
-    # top endpoint requires defining the scope
 
     artists_params = {
         'time_range':'short_term',
@@ -31,5 +31,12 @@ def user_profile():
     artists_response = get(f'{API_BASE_URL}me/top/artists?{urlencode(artists_params)}', headers=headers)
     artists = artists_response.json()
 
-    return render_template('profile/me.html', profile=profile, artists=artists)
+    tracks_response = get(f'{API_BASE_URL}me/top/tracks?{urlencode(artists_params)}', headers=headers)
+    tracks = tracks_response.json()
+
+    for x in tracks['items'][1]:
+        print(x)
+
+
+    return render_template('profile/me.html', profile=profile, artists=artists, tracks=tracks)
 

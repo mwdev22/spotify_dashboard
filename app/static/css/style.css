@@ -9,7 +9,8 @@ html{
 }
 
 body{
-    background-color: rgb(21, 20, 20);
+    min-height: 100vh;
+    background: linear-gradient(30deg, #5add63 11%, #000 23%, #000 73%, #5add63 99%)no-repeat ;
 }
 a{
     text-decoration: none;
