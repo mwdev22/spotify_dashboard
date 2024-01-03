@@ -76,6 +76,5 @@ def my_playlists():
     }
     response = get(f'{API_BASE_URL}me/playlists', headers=headers)
     playlists = response.json()['items']
-    for playlist in playlists:
-        print(playlist['name'])
-    return jsonify(playlists)
+
+    return render_template('profile/my_playlists.html', playlists=playlists)

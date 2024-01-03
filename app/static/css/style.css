@@ -1,11 +1,12 @@
 @import './me.css';
 @import './nav.css';
+@import './playlists.css';
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;700&display=swap');
 
 html{
     font-size: 10px;
     font-family: 'Work Sans', sans-serif;
-
+    font-weight: 300;
 }
 a{
     text-decoration: none;
@@ -51,7 +52,7 @@ body{
 }
 
 .ttl span{
-    padding: 0 5rem 0 5rem;
+    padding: 5rem;
     font-size: 2vw;
 }
 
@@ -71,4 +72,19 @@ body{
 
 .s-stats p{
     font-size: 2rem;
+}
+
+
+.ind-lnk{
+    padding: 4rem;
+    margin: 4rem;
+    background-color: black;
+    border-radius: 1.4rem;
+    background-color: rgb(29, 27, 27);
+    font-size: 3vw;
+    font-weight: 300;
+}
+
+.ind-lnk:hover{
+    animation: border-frame 0.4s forwards;
 }

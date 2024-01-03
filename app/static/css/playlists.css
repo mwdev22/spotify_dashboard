@@ -1,0 +1,52 @@
+
+#play-sec{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    backdrop-filter: blur(12px);
+    box-shadow: 0px 0px 31px 4px #5add63;
+}
+.pl-cont{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#p-card{
+    flex: 1 0 30%; /* 30% szerokości każdego elementu w rzędzie na normalnym widoku */
+    text-align: center;
+    box-sizing: border-box;
+    padding: 3rem;
+}
+.play-link{
+    width: 28%;
+    background-color: rgb(29, 27, 27);
+    align-items: center;
+    overflow: hidden;
+    margin: 1rem 0 1rem 0;
+    text-align: center;
+}
+
+.play-link:hover{
+    background-color: #5add63;
+    color: black;
+}
+
+
+.p-txt{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    word-wrap: break-word;
+}
+.p-txt h2{
+    font-size: 1.6vw;
+}
+
+.pl-img{
+    width: 100%;
+    height: auto;
+}
+

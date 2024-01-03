@@ -17,12 +17,11 @@
             <p>Average number of each user followers in our service: <strong>{{follows_average}}</strong></p>
         </article>
     </section>
-    <article>
-            <a href="{{url_for('profile.user_profile')}}">Take a look at your profile...</a>
-            {% else %}
-            <a href="{{url_for('auth.login')}}">Login to get started!</a>
-            {% endif %}
-    </article>
+
+        <a class="ind-lnk" href="{{url_for('profile.user_profile')}}">Take a look at your profile...</a>
+        {% else %}
+        <a class="ind-lnk" href="{{url_for('auth.login')}}">Login to get started!</a>
+        {% endif %}
 </section>
 
 {% endblock %}
