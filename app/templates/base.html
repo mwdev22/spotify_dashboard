@@ -12,7 +12,7 @@
         <ul class="menu">
             <li>Home</li>
             {% if session['access_token'] %}
-                <a><li>Profile</li></a>
+                <a href="{{url_for('profile.user_profile')}}"><li>Profile</li></a>
                 <a href="{{url_for('profile.my_playlists')}}"><li>My Playlists</li></a>
                 <a><li>My Stats</li></a>
                 <a href="{{url_for('auth.logout')}}"><li>Logout</li></a>
@@ -31,7 +31,6 @@
             &times;
         </a>
         <ul class="resp-menu">
-            <li>Home</li>
             {% if session['access_token'] %}
                 <a href="{{url_for('profile.user_profile')}}"><li>Profile</li></a>
                 <a href="{{url_for('profile.my_playlists')}}"><li>My Playlists</li></a>

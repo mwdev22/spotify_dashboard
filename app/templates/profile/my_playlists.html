@@ -1,3 +1,26 @@
 {% extends "base.html" %}
 
 {% block title %}My Playlists{% endblock title %}
+
+{% block content %}
+    <section class="container">
+        <article class="s-stats">
+            <span>Your Playlists</span>
+            <div class="pl-cont">
+                <div class="top-card">
+                    {% for playlist in playlists %}
+                        <a href="{{playlist.external_urls['spotify']}}">
+                        <div class="top-card">
+                            <img src="{{playlist.images[1].url}}" class="top-img">
+                            <p>
+                                <span>{{playlist.name}}</span>
+                                <span id="top-s">{{playlist.owner['display_name']}}</span>
+                            </p> 
+                        </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </article>
+    </section>
+{% endblock content %}

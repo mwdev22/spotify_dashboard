@@ -9,6 +9,8 @@
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     margin-bottom: 5rem;
+    width: 80%;
+    padding: 3rem;
 }
 
 .ph-div{
@@ -69,12 +71,12 @@
     background-color: rgb(29, 27, 27);
     align-items: center;
     overflow: hidden;
-    transition: 0.4s ease-in-out;
+
     text-align: center;
 }
 .top-card:hover{
     background-color: #5add63;
-    transform: scale(1.02);
+
     color: black;
 }
 .top-card p{
@@ -106,6 +108,7 @@
 
     .prof-info{
         flex-direction: column;
+        padding: 0;
     }
 
     .ph-div{
@@ -149,7 +152,7 @@
         font-size: 4vw;
        }
     .top-card span{
-        font-size: 3vw;
+                font-size: 3vw;
     }
     
     #top-s{

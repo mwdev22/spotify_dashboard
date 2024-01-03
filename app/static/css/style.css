@@ -21,13 +21,14 @@ body{
     display: flex;
     flex-direction: column;
     font-weight: 500;
+    align-items: center;
 }
 
 .container article{
     font-size: 2rem;
     display: flex;
     justify-content: center;
-    width: inherit;
+    width: 50%;
     text-align: center;
     background: rgba( 97, 202, 97, 0.5 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -35,6 +36,11 @@ body{
     -webkit-backdrop-filter: blur( 8.5px );
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.col-content{
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
 .ttl{
@@ -46,7 +52,7 @@ body{
 
 .ttl span{
     padding: 0 5rem 0 5rem;
-    font-size: 3.5vw;
+    font-size: 2vw;
 }
 
 .s-stats{
@@ -58,7 +64,8 @@ body{
 }
 
 .s-stats span{
-    font-size: 4vw;
+    font-size: 3vw;
+    padding: 3rem;
     margin-bottom: 2rem;
 }
 
