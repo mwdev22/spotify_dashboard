@@ -31,6 +31,8 @@ def login():
 def callback():
     if 'error' in request.args:
         return jsonify({"error": request.args['error']})
+    
+    # callback getting code if authorization is succesfull
     if 'code' in request.args:
         code = request.args.get('code')
 
