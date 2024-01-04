@@ -22,10 +22,11 @@ def current_trends():
     params = {
         'limit':5,
         'offset':0,
+        'country':'PL'
     }
 
-    albums = ...
+    pl_albums = get(f'{API_BASE_URL}browse/new-releases?{urlencode(params)}').json()
+    params['country'] = 'US'
+    us_albums =  pl_albums = get(f'{API_BASE_URL}browse/new-releases?{urlencode(params)}').json()
 
-    tracks = ...
-
-    return jsonify() # trends there
+    return jsonify(pl_albums, us_albums) # trends there

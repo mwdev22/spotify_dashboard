@@ -58,10 +58,10 @@ def user_profile():
 
     # getting top tracks and artists including params
     artists_response = get(f'{API_BASE_URL}me/top/artists?{urlencode(params)}', headers=headers)
-    artists = artists_response.json()
+    artists = artists_response.json()['items']
 
     tracks_response = get(f'{API_BASE_URL}me/top/tracks?{urlencode(params)}', headers=headers)
-    tracks = tracks_response.json()
+    tracks = tracks_response.json()['items']
 
     return render_template('profile/me.html', profile=profile, artists=artists, tracks=tracks)
 

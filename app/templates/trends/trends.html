@@ -1,29 +1,18 @@
 {% extends "base.html" %}
 
-{% block title %}My Porifle{% endblock %}
+{% block title %}Trends{% endblock %}
 
 {% block content %}
 <section class="container">
-    <section class="prof-info">
-        <div class="ph-div">
-            <img src={{profile.images[1].url}} width="{{profile.images[1].width}}" height="{{profile.images[1].height}}">
-            <h5>{{profile.display_name}}</h5>
-        </div>
-        <div class="name-div">
-            <h1>ID: {{profile.id}}</h1>
-            <h1>Email: {{profile.email}}</h1>
-            <h1>Product: {{profile.product}}</h1>
-        </div>
-    </section>
     <section class="top-items">
             <div class="top-sec">
                 <h5>Your top 5 artists in last 4 weeks</h5>
-                {% for artist in artists %}
-                    <a href="{{artist.external_urls['spotify']}}"><div class="top-card">
-                        <img src="{{artist.images[1].url}}" class="top-img">
+                {% for album in albums %}
+                    <a href="{{album.external_urls['spotify']}}"><div class="top-card">
+                        <img src="{{album.images[1].url}}" class="top-img">
                         <p>
-                            <span>{{artist.name}}</span>
-                            <span id="top-s">{{artist.genres[0]}}</span>
+                            <span>{{album.name}}</span>
+                            <span id="top-s">{{album.genres[0]}}</span>
                         </p> 
                     </div>
                     </a>

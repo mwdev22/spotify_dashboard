@@ -43,6 +43,7 @@ def callback():
             'client_id': CLIENT_ID,
             'client_secret': CLIENT_SECRET
         }
+        
         response = post(TOKEN_URL, data=req_body)
         token_info = response.json()
     #   to sending requests
