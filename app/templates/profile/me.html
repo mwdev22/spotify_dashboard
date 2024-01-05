@@ -16,9 +16,9 @@
         </div>
     </section>
     <form id="range-form" action="/me" method="get">
-        <button type="submit" value="in last 4 weeks" name="time_arg">Last 4 weeks</button>
-        <button type="submit" value="in last 6 months" name="time_arg">Last 6 Months</button>
-        <button type="submit" value="of all time" name="time_arg">All time</button>
+        <button type="submit" value="in last 4 weeks" name="time_arg" {% if time_period == 'in last 4 weeks' %}class="active"{% endif %}>Last 4 weeks</button>
+    <button type="submit" value="in last 6 months" name="time_arg" {% if time_period == 'in last 6 months' %}class="active"{% endif %}>Last 6 Months</button>
+    <button type="submit" value="of all time" name="time_arg" {% if time_period == 'of all time' %}class="active"{% endif %}>All time</button>
     </form>
     <section class="top-items">
             <div class="top-sec">

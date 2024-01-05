@@ -4,7 +4,6 @@
 
 {% block content %}
 <section class="container">
-    <p class="site-ttl">SPOTIFY_DASHBOARD</p>
     <section class="col-content">
         <article class="ttl">
             <span>Welcome to our website! It allows you to check informations about your spotify account!</span>
@@ -21,6 +20,7 @@
             <a class="ind-lnk substr-lnk" href="{{url_for('trends.current_trends')}}">See actual album trends!</a>   
         </section> 
         {% else %}
+        </section>
         <a class="ind-lnk" href="{{url_for('auth.login')}}">Login to get started!</a>
         {% endif %}
 </section>
