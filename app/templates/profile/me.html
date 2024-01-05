@@ -15,9 +15,14 @@
             <h1>Product: {{profile.product}}</h1>
         </div>
     </section>
+    <form id="range-form" action="/me" method="get">
+        <button type="submit" value="in last 4 weeks" name="time_arg">Last 4 weeks</button>
+        <button type="submit" value="in last 6 months" name="time_arg">Last 6 Months</button>
+        <button type="submit" value="of all time" name="time_arg">All time</button>
+    </form>
     <section class="top-items">
             <div class="top-sec">
-                <h5>Your top 5 artists in last 4 weeks</h5>
+                <h5>Your top 5 artists {{time_period}}</h5>
                 {% for artist in artists %}
                     <a href="{{artist.external_urls['spotify']}}"><div class="top-card">
                         <img src="{{artist.images[1].url}}" class="top-img">
@@ -30,7 +35,7 @@
                 {% endfor %}
             </div>
             <div class="top-sec">
-                <h5>Your top 5 artists in last 4 weeks</h5>
+                <h5>Your top 5 artists {{ time_period }}</h5>
                 {% for track in tracks %}
                     <a href="{{track.external_urls['spotify']}}"><div class="top-card">
                         <img src="{{track['album']['images'][1].url}}" class="top-img">

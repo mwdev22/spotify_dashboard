@@ -1,4 +1,4 @@
-from flask import Blueprint, session, render_template, jsonify
+from flask import Blueprint, session, render_template, request
 from app.utils.extenisons import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTH_URL, TOKEN_URL, API_BASE_URL
 
 from app.utils.funcs import check_token, refresh
@@ -46,12 +46,28 @@ def user_profile():
         existing_user.subscription = profile['product']
         existing_user.followers = profile['followers']['total']
         db.session.commit()
-        
-    print(User.count_users())
-    print(User.average_followers())
 
+
+    # time ranges for top items offered by spotify api
+    possible_ranges = {
+        'in last 4 weeks':'short_term',
+        'in last 6 months':'medium_term',
+        'of all time':'long_term'
+    }
+
+    #   getting time range based on value from form    
+    if 'time_arg' in request.args:
+        time_range = possible_ranges[request.args.get('time_arg')]
+    #   getting also time period to be shown on the website
+        time_period = list(possible_ranges.keys())[list(possible_ranges.values()).index(time_range)]
+    else:
+    #   default situation, where we are opening /me endpoint for the first time
+        time_period = 'in last 4 weeks'
+        time_range = possible_ranges[time_period]
+
+    #   request params for tracks and artists data
     params = {
-        'time_range':'short_term',
+        'time_range':time_range,
         'limit':5,
         'offset':0
     }
@@ -63,7 +79,7 @@ def user_profile():
     tracks_response = get(f'{API_BASE_URL}me/top/tracks?{urlencode(params)}', headers=headers)
     tracks = tracks_response.json()['items']
 
-    return render_template('profile/me.html', profile=profile, artists=artists, tracks=tracks)
+    return render_template('profile/me.html', profile=profile, time_period = time_period, artists=artists, tracks=tracks)
 
 @profile_bp.route('/playlists')
 def my_playlists():

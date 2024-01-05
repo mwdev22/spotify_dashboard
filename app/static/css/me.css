@@ -8,7 +8,6 @@
     -webkit-backdrop-filter: blur( 8.5px );
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
-    margin-bottom: 5rem;
     width: 80%;
     padding: 3rem;
 }
@@ -23,7 +22,6 @@
     font-weight: 700;
     margin: 0;
     text-shadow: 0px 0px 6px rgb(158, 157, 157);
-    
 }
 .ph-div img{
     border-radius: 50%;
@@ -38,6 +36,33 @@
     text-align: center;
     font-size: 1.3vw;
 }
+
+#range-form{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5rem 0 5rem 0;
+    padding: 2rem;
+}
+#range-form button{
+    border-radius: 1.4rem;
+    font-size: 2.5vw;
+    background-color: rgb(29, 27, 27);
+    border: none;
+    cursor: pointer;
+    padding: 3rem;
+    color: rgb(158, 157, 157);
+}
+#range-form button:hover{
+    border-radius: 1.4rem;
+    background-color: rgb(29, 27, 27);
+    background-color: #5add63;
+    box-shadow: 0px 0px 31px 4px #5add63;
+    color: black;
+}
+
+
 
 .top-items{
     width: 100%;
