@@ -6,26 +6,30 @@
 <section class="container">
     <section class="top-items">
             <div class="top-sec">
-                <h5>Your top 5 artists in last 4 weeks</h5>
-                {% for album in albums %}
-                    <a href="{{album.external_urls['spotify']}}"><div class="top-card">
+                <h5>Top 5 trending new releases in US</h5>
+                {% for album in us_albums %}
+                    <a href="{{album['external_urls']}}"><div class="top-card">
                         <img src="{{album.images[1].url}}" class="top-img">
                         <p>
                             <span>{{album.name}}</span>
-                            <span id="top-s">{{album.genres[0]}}</span>
+                            <span id="top-s">{% for artist in album['artists'] %}
+                                {{artist['name']}}
+                            {% endfor %}</span>
+                            <span id="top-s">{{album.release_date}}</span>
                         </p> 
                     </div>
                     </a>
                 {% endfor %}
             </div>
             <div class="top-sec">
-                <h5>Your top 5 artists in last 4 weeks</h5>
-                {% for track in tracks %}
-                    <a href="{{track.external_urls['spotify']}}"><div class="top-card">
-                        <img src="{{track['album']['images'][1].url}}" class="top-img">
+                <h5>Top 5 trending new releases in Poland</h5>
+                {% for album in pl_albums %}
+                    <a href="{{album['external_urls']}}"><div class="top-card">
+                        <img src="{{album.images[1].url}}" class="top-img">
                         <p>
-                            <span>{{track.name}}</span>
-                            <span id="top-s">{% for artist in track['artists'] %}
+                            <span>{{album.name}}</span>
+                            <span id="top-s">{{album.release_date}}</span>
+                            <span id="top-s">{% for artist in album['artists'] %}
                                 {{artist['name']}}
                             {% endfor %}</span>
                         </p>

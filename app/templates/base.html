@@ -10,6 +10,7 @@
 <body>
     <nav id="navv">
         <ul class="menu">
+                <a href="{{url_for('main.index')}}"><li>Home</li></a>
             {% if session['access_token'] %}
                 <a href="{{url_for('profile.user_profile')}}"><li>Profile</li></a>
                 <a href="{{url_for('profile.my_playlists')}}"><li>My Playlists</li></a>
@@ -29,6 +30,7 @@
             &times;
         </a>
         <ul class="resp-menu">
+                <a href="{{url_for('main.index')}}"><li>Home</li></a>
             {% if session['access_token'] %}
                 <a href="{{url_for('profile.user_profile')}}"><li>Profile</li></a>
                 <a href="{{url_for('profile.my_playlists')}}"><li>My Playlists</li></a>

@@ -4,21 +4,22 @@
 
 {% block content %}
 <section class="container">
-    <p>SPOTIFY_DASHBOARD</p>
+    <p class="site-ttl">SPOTIFY_DASHBOARD</p>
     <section class="col-content">
         <article class="ttl">
             <span>Welcome to our website! It allows you to check informations about your spotify account!</span>
-            {% if session['access_token'] %}
         </article>
-
+    {% if session['access_token'] %}
         <article class="s-stats">
             <span> About our visitors </span>
             <p>Total number of users: <strong>{{user_count}}</strong></p>
             <p>Average number of each user followers in our service: <strong>{{follows_average}}</strong></p>
         </article>
     </section>
-
         <a class="ind-lnk" href="{{url_for('profile.user_profile')}}">Take a look at your profile...</a>
+        <section class="col-content">
+            <a class="ind-lnk substr-lnk" href="{{url_for('trends.current_trends')}}">See actual album trends!</a>   
+        </section> 
         {% else %}
         <a class="ind-lnk" href="{{url_for('auth.login')}}">Login to get started!</a>
         {% endif %}

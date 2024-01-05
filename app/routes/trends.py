@@ -25,8 +25,10 @@ def current_trends():
         'country':'PL'
     }
 
-    pl_albums = get(f'{API_BASE_URL}browse/new-releases?{urlencode(params)}').json()
-    params['country'] = 'US'
-    us_albums =  pl_albums = get(f'{API_BASE_URL}browse/new-releases?{urlencode(params)}').json()
+    pl_albums = get(f'{API_BASE_URL}browse/new-releases?{urlencode(params)}', headers=headers).json()['albums']['items']
 
-    return jsonify(pl_albums, us_albums) # trends there
+    params['country'] = 'US'
+
+    us_albums = get(f'{API_BASE_URL}browse/new-releases?{urlencode(params)}',headers=headers).json()['albums']['items']
+
+    return render_template('trends/trends.html', pl_albums=pl_albums, us_albums=us_albums)
