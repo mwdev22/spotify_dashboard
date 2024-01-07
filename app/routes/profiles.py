@@ -1,4 +1,4 @@
-from flask import Blueprint, session, render_template, request
+from flask import Blueprint, session, render_template, request, jsonify
 from app.utils.extenisons import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTH_URL, TOKEN_URL, API_BASE_URL
 
 from app.utils.funcs import check_token, refresh
@@ -20,7 +20,11 @@ def user_profile():
     }
      # getting profile info
     prof_response = get(f'{API_BASE_URL}me', headers=headers)
-    profile = prof_response.json()
+
+    try:
+        profile = prof_response.json()
+    except:
+        jsonify({'error':'error while getting data about ur account'})
 
     # searching if user exists in our database
     existing_user = User.query.filter_by(spotify_id=profile['id']).first()
@@ -28,7 +32,6 @@ def user_profile():
     if not existing_user:
 
         new_user = User( 
-            id=User.count_users(), # user ids based on number of users
             spotify_id=profile['id'],
             display_name=profile['display_name'],
             email=profile['email'],

@@ -10,7 +10,6 @@ auth_bp = Blueprint('auth', __name__, url_prefix='/auth', template_folder='templ
 
 @auth_bp.route('/login')
 def login():
-    print('reached login')
 
     # params for oauth with spotify
     params = {
@@ -21,8 +20,7 @@ def login():
     }
     # encoding params
     auth_url = f'{AUTH_URL}?{urlencode(params)}'
-    print(auth_url)
-    
+
     # redirect user to spotify login page, including encoded params with my app specification
     return redirect(auth_url)
 
@@ -53,7 +51,6 @@ def callback():
     #   info about expiring time
         session['expires_in'] = datetime.now().timestamp() + token_info['expires_in']
 
-        print(session['expires_in'])
 
         return redirect('/')
 
@@ -65,7 +62,7 @@ def logout():
 
 @auth_bp.route('/refresh-token')
 def refresh():
-    print('refresh')
+
     if 'refresh_token' not in session:
         return redirect('/login')
     
