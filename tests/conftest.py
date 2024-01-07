@@ -1,8 +1,10 @@
 import pytest
-from .. import create_app, db
+from app import create_app, db
+
 
 @pytest.fixture()
 def app():
+    print('setup')
     # setup for the tests
     app = create_app()
 

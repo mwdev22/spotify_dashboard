@@ -2,14 +2,14 @@ from ..utils.extenisons import db
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    spotify_id = db.Column(db.String(80), unique=True, nullable=False)
+    spotify = db.Column(db.String(80), nullable=False)
     email = db.Column(db.String(100))
     display_name = db.Column(db.String(40), nullable=False)
     subscription = db.Column(db.String(12), default='free')  
     followers = db.Column(db.Integer)
 
-    def __init__(self,spotify_id,email,display_name,subscription,followers):
-        self.spotify_id = spotify_id
+    def __init__(self,spotify,email,display_name,subscription,followers):
+        self.spotify = spotify
         self.email = email
         self.display_name = display_name
         self.subscription = subscription

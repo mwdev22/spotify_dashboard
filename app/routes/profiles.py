@@ -27,12 +27,12 @@ def user_profile():
         jsonify({'error':'error while getting data about ur account'})
 
     # searching if user exists in our database
-    existing_user = User.query.filter_by(spotify_id=profile['id']).first()
+    existing_user = User.query.filter_by(spotify=profile['id']).first()
 
     if not existing_user:
 
         new_user = User( 
-            spotify_id=profile['id'],
+            spotify=profile['id'],
             display_name=profile['display_name'],
             email=profile['email'],
             subscription=profile['product'],  
