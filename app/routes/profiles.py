@@ -79,6 +79,7 @@ def user_profile():
     artists = artists_response.json()['items']
 
     tracks_response = get(f'{API_BASE_URL}me/top/tracks?{urlencode(params)}', headers=headers)
+
     tracks = tracks_response.json()['items']
 
     return render_template('profile/me.html', profile=profile, time_period = time_period, artists=artists, tracks=tracks)

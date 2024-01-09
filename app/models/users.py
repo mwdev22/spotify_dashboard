@@ -16,13 +16,13 @@ class User(db.Model):
         self.followers = followers
 
     # number of users
-    @staticmethod
-    def count_users():
-        return User.query.count()
+    @classmethod
+    def count_users(cls):
+        return cls.query.count()
     
-    @staticmethod
-    def average_followers():
-        total_users = User.query.count()
+    @classmethod
+    def average_followers(cls):
+        total_users = cls.query.count()
         total_followers = db.session.query(db.func.sum(User.followers)).scalar()
 
         if total_users == 0:
