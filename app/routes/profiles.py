@@ -20,11 +20,10 @@ def user_profile():
     }
      # getting profile info
     prof_response = get(f'{API_BASE_URL}me', headers=headers)
-
     try:
         profile = prof_response.json()
     except:
-        jsonify({'error':'error while getting data about ur account'})
+        return jsonify({'error':'error while getting data about your spotify account'})
 
     # searching if user exists in our database
     existing_user = User.query.filter_by(spotify=profile['id']).first()
