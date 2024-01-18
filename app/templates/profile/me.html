@@ -35,7 +35,7 @@
                 {% endfor %}
             </div>
             <div class="top-sec">
-                <h5>Your top 5 artists {{ time_period }}</h5>
+                <h5>Your top 5 tracks {{ time_period }}</h5>
                 {% for track in tracks %}
                     <a href="{{track.external_urls['spotify']}}"><div class="top-card">
                         <img src="{{track['album']['images'][1].url}}" class="top-img">

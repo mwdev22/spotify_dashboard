@@ -15,6 +15,10 @@ class User(db.Model):
         self.subscription = subscription
         self.followers = followers
 
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
     # number of users
     @classmethod
     def count_users(cls):

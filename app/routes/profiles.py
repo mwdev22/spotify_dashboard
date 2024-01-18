@@ -39,8 +39,8 @@ def user_profile():
         )
 
         # add the new user to the database
-        db.session.add(new_user)
-        db.session.commit()
+        new_user.save()
+        
     else:
         # updating user data if not logged first time
         existing_user.display_name = profile['display_name']
