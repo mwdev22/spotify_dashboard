@@ -9,9 +9,9 @@ from app.utils.extenisons import db, migrate
 import sys
 
 
-def create_app():
+def create_app(config_file='config.py'):
     app = Flask(__name__)
-    app.config.from_pyfile('config.py')
+    app.config.from_pyfile(config_file)
     
     # blueprints
     app.register_blueprint(main_bp)
