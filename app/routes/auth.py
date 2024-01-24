@@ -66,7 +66,7 @@ def refresh():
     if 'refresh_token' not in session:
         return redirect('/login')
     
-    if datetime.now() > session['expires_in']:
+    if datetime.now().timestamp() > session['expires_in']:
         req_body = {
             'refresh_token':session['refresh_token'],
             'grant_type': 'authorization_code',
